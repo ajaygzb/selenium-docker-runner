@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage("Pull Latest Image"){
 			steps{
-				bat "docker pull vinsdocker/selenium-docker"
+				bat "docker pull ajaygzb10/selenium-docker"
 			}
 		}
 		stage("Start Grid"){
@@ -21,7 +21,7 @@ pipeline{
 		always{
 			archiveArtifacts artifacts: 'output/**'
 			bat "docker-compose down"
-			bat "rm -rf output/"
+			bat "rmdir /s/q output"
 		}
 	}
 }
