@@ -5,7 +5,7 @@ services:
     ports:
       - "4444:4444"
   chrome:
-    image: selenium/node-chrome:3.14
+    image: selenium/node-chrome:3.14      
     depends_on:
       - hub
     environment:
@@ -14,7 +14,7 @@ services:
       - ./downloads:/home/seluser/Downloads
   firefox:
     image: selenium/node-firefox:3.14
-    shm_size: '1gb'
+    shm_size: '1gb'   
     depends_on:
       - hub
     environment:
@@ -31,8 +31,8 @@ services:
       - BROWSER=firefox
       - MODULE=search-module.xml
     volumes:
-         - ./search_result:/usr/share/udemy/test-output
-  search-module1:
+      - ./output/search-result:/usr/share/udemy/test-output      
+  book-flight-module:
     image: vinsdocker/selenium-docker
     depends_on:
       - chrome
@@ -40,6 +40,6 @@ services:
     environment:
       - HUB_HOST=hub
       - BROWSER=chrome
-      - MODULE=search-module.xml
+      - MODULE=book-flight-module.xml
     volumes:
-         - ./search_result1:/usr/share/udemy/test-output
+      - ./output/book-result:/usr/share/udemy/test-output   
